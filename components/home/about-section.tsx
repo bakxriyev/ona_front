@@ -8,7 +8,7 @@ import { Feature } from "next/dist/build/webpack/plugins/telemetry-plugin/teleme
 
 interface AboutSectionProps {
   isLoading?: boolean
-   about: About | null
+   about?: About | null
 }
 
 const features = [

@@ -22,9 +22,9 @@ import { About, QuickAction, Slider } from "@/lib/types"
 
 interface HeroSectionProps {
   isLoading?: boolean
-  about: About | null
-   quickActions: QuickAction[]
-  slider: Slider | null
+  about?: About | null
+  quickActions?: QuickAction[]
+  slider?: Slider | null
 }
 
 const quickActions = [
