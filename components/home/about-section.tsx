@@ -9,7 +9,6 @@ import { Feature } from "next/dist/build/webpack/plugins/telemetry-plugin/teleme
 interface AboutSectionProps {
   isLoading?: boolean
    about: About | null
-  features: Feature[]
 }
 
 const features = [
@@ -21,6 +20,7 @@ const features = [
 ]
 
 export function AboutSection({ isLoading }: AboutSectionProps) {
+
   if (isLoading) {
     return (
       <section className="py-16 px-4 max-w-7xl mx-auto">
