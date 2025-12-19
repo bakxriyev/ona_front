@@ -35,6 +35,7 @@ export interface NewsItem {
   matn_ru: string
   photo: string | null
   video: string | null
+  gallery: string[]
   date: string
   created_at?: string
 }
