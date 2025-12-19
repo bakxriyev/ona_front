@@ -3,9 +3,13 @@
 import Image from "next/image"
 import { Globe, Users, Cpu,DockIcon,HelpCircle } from "lucide-react"
 import { DoctorCardSkeleton, Skeleton } from "../../components/ui/loading-skeleton"
+import { About } from "@/lib/types"
+import { Feature } from "next/dist/build/webpack/plugins/telemetry-plugin/telemetry-plugin"
 
 interface AboutSectionProps {
   isLoading?: boolean
+   about: About | null
+  features: Feature[]
 }
 
 const features = [

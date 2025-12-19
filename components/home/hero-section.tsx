@@ -18,9 +18,13 @@ import {
 import { HeroSkeleton } from "@/components/ui/loading-skeleton"
 import { useLanguage } from "../../context/language-context"
 import { useEffect, useState } from "react"
+import { About, QuickAction, Slider } from "@/lib/types"
 
 interface HeroSectionProps {
   isLoading?: boolean
+  about: About | null
+   quickActions: QuickAction[]
+  slider: Slider | null
 }
 
 const quickActions = [
