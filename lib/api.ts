@@ -107,8 +107,6 @@ export const api = {
   getAboutItem: (id: number) => fetchAPI<About>(`/about/${id}`),
 
   // ========== FAQ (Ko'p so'raladigan savollar) ==========
-  getFAQs: () => fetchAPI<FAQ[]>("/faq"),
-  getFAQ: (id: number) => fetchAPI<FAQ>(`/faq/${id}`),
 
   // ========== STATS (Statistika) ==========
   getStats: () => fetchAPI<Stat[]>("/stats"),

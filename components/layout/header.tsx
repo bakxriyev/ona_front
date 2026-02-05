@@ -12,13 +12,13 @@ import type { About, Service, Direction } from "@/lib/types"
 
 const navItems = [
   { labelUz: "Bosh sahifa", labelRu: "Главная", href: "/", hasDropdown: false },
-  { labelUz: "Klinika haqida", labelRu: "О клинике", href: "/about", hasDropdown: true, dropdownType: "about" },
+  { labelUz: "Klinika haqida", labelRu: "О клинике", href: "/about", hasDropdown: false },
   { labelUz: "Xizmatlar", labelRu: "Услуги", href: "/services", hasDropdown: true, dropdownType: "services" },
   { labelUz: "Bo'limlar", labelRu: "Отделения", href: "/departments", hasDropdown: true, dropdownType: "departments" },
   { labelUz: "Shifokorlar", labelRu: "Врачи", href: "/doctors", hasDropdown: false },
   { labelUz: "Blog", labelRu: "Блог", href: "/blog", hasDropdown: false },
   { labelUz: "Kontaktlar", labelRu: "Контакты", href: "/contact", hasDropdown: false },
-  { labelUz: "Karyera", labelRu: "Карьера", href: "/career", hasDropdown: false },
+  // { labelUz: "Karyera", labelRu: "Карьера", href: "/career", hasDropdown: false },
 ]
 
 const languages = [

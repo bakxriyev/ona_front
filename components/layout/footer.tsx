@@ -44,11 +44,11 @@ export function Footer() {
   // Static defaults
   const defaults = {
     description:
-      "SOG`LOM ONA VA BOLA KLINIKASI — Markaziy Osiyodagi zamonaviy jihozlangan xususiy ko'p tarmoqli klinika bo'lib, tashxis, davolash va murakkab yurak jarrohligi, ginekologiya, urologiya, qon-tomir, ortopediya va boshqa operatsiyalarni o'tkazish uchun mo'ljallangan.",
+      " SOG`LOM ONA VA BOLA KLINIKASI",
     description_ru:
-      "SOG`LOM ONA VA BOLA KLINIKASI — современная многопрофильная университетская клиника в Центральной Азии, специализирующаяся на диагностике, лечении и проведении сложных операций.",
-    manzil: "Toshkent shahri, Olmazor tumani, Kichik Xalqa Yo'li ko'chasi, 5A",
-    manzil_ru: "г. Ташкент, Алмазарский район, ул. Кичик Халка Йули, 5А",
+      " SOG`LOM ONA VA BOLA KLINIKASI",
+    manzil: "Тошкент шахар Бектемир тумани  Обод кучаси 123 уй",
+    manzil_ru: "Тошкент шахар Бектемир тумани  Обод кучаси 123 уй",
   }
 
   if (isLoading) {
@@ -81,9 +81,8 @@ export function Footer() {
             <div className="flex-shrink-0">
               <p className="font-semibold text-white mb-2">{t("Ish vaqti", "Время работы")}</p>
               <div className="text-sm text-white/90 space-y-0.5">
-                <p>{t("Dushanba – Juma: 08:30 – 17:00", "Понедельник – Пятница: 08:30 – 17:00")}</p>
-                <p>{t("Shanba: 09:00 – 14:00", "Суббота: 09:00 – 14:00")}</p>
-                <p>{t("Yakshanba: Dam olish kuni", "Воскресенье: Выходной")}</p>
+                <p>{t("Dushanbadan – Yakshanbagacha: 24/7", "Круглосуточная работа: 24/7")}</p>
+              
               </div>
             </div>
 
@@ -93,7 +92,7 @@ export function Footer() {
                 <div className="flex animate-marquee whitespace-nowrap">
                   {[...Array(8)].map((_, i) => (
                     <span key={i} className="mx-8 text-xl md:text-3xl font-bold tracking-wider">
-                    SOG`LOM ONA VA BOLA KLINIKASI
+                   SOG`LOM ONA VA BOLA KLINIKASI
                     </span>
                   ))}
                 </div>
@@ -115,7 +114,7 @@ export function Footer() {
                 {about?.logo ? (
                   <Image
                     src={getImageUrl("about", about.logo) || "/placeholder.svg"}
-                    alt={about?.full_name || "AKFA MEDLINE"}
+                    alt={about?.full_name || "SOG`LOM ONA VA BOLA KLINIKASI"}
                     width={150}
                     height={60}
                     className="h-12 w-auto object-contain"
@@ -123,7 +122,7 @@ export function Footer() {
                 ) : (
                   <div className="flex items-center gap-2">
                     <div className="bg-[#c41e3a] text-white px-3 py-1.5 rounded-full text-xs font-bold">
-                    SOG`LOM ONA va BOLA KLINIKASI
+                   SOG`LOM ONA VA BOLA KLINIKASI
                     </div>
                     <div className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
                       <span className="text-yellow-700 text-sm">✓</span>
@@ -134,21 +133,15 @@ export function Footer() {
 
               {/* Description - static */}
               <p className="text-sm text-gray-600 mb-5 leading-relaxed">
-                {language === "ru" ? defaults.description_ru : defaults.description}
+              SOG`LOM ONA VA BOLA KLINIKASI
               </p>
 
               {/* Social links */}
               <div className="flex gap-4">
-                <a href="#" className="text-gray-400 hover:text-gray-600 transition-colors">
-                  <Facebook className="w-5 h-5" />
-                </a>
-                <a href="#" className="text-gray-400 hover:text-gray-600 transition-colors">
-                  <Youtube className="w-5 h-5" />
-                </a>
-                <a href="#" className="text-gray-400 hover:text-gray-600 transition-colors">
+                <a href="https://www.instagram.com/endokrinolog_uz_/" className="text-gray-400 hover:text-gray-600 transition-colors">
                   <Instagram className="w-5 h-5" />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-gray-600 transition-colors">
+                <a href="https://t.me/endokrinologiya_kardialogiya" className="text-gray-400 hover:text-gray-600 transition-colors">
                   <Send className="w-5 h-5" />
                 </a>
               </div>
@@ -194,23 +187,14 @@ export function Footer() {
             <div>
               <h4 className="font-semibold text-gray-900 mb-4">{t("Kontaktlar", "Контакты")}</h4>
               <div className="text-sm text-gray-600 space-y-2">
-                <p>{about?.phone || "+998 71 203-30-03"}</p>
-                <p>{about?.gmail || "info@akfamedline.uz"}</p>
+                <p>{about?.phone || "+998 77 313 01 30"}</p>
+                <p>{about?.gmail || "info@onabolaclinic.uz"}</p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom license section */}
-      <div className="bg-gray-100 border-t border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex flex-col md:flex-row justify-between items-center gap-2 text-xs text-gray-500">
-          <p>2017-yil 23-maydagi 520218-sonli ro'yxatga olish guvohnomasi</p>
-          <p>2018-yil 19-iyuldagi 00378-sonli litsenziya</p>
-        </div>
-      </div>
-
-      {/* Scroll to top button */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         className="fixed bottom-6 right-6 w-12 h-12 bg-[#1e5a8d] rounded-full flex items-center justify-center shadow-lg hover:bg-[#2a6a9d] transition-all z-40 text-white hover:scale-110"

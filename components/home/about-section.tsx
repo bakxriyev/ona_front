@@ -59,30 +59,9 @@ export function AboutSection({ isLoading }: AboutSectionProps) {
         <div className="w-full lg:w-1/2 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
           <h2 className="text-3xl font-bold text-[#d32f2f] mb-4">Klinika haqida</h2>
           <p className="text-gray-600 mb-8 leading-relaxed">
-       Sog'lom Ona va Bola klinikasi
-Shifoxonamiz 2022 yil oktabr oyida o'z faoliyatini boshla-
-gan. Klinikamiz Toshkent shahar Bektemir tumani, Obod
-ko'chasi 123-uyda joylashgan. Klinikamizda quyidagi
-bo'limlar mavjud: Pediatriya, Nevrologiya, Endokrinolo-
-giya, Ginekologiya, Umumiy terapiya, Otorinolaringolo-
-giya. Klinika 25 o'rinli joy bilan ta'minlangan.
+       Шифохонамиз 2022 ийл октябрь ойида уз иш фаолятини бошлаган.Шифохонамаз Тошкент шахар Бектемир тумани  Обод кучаси 123 уйда жойлашган булиб,клиникамизда Педиатрия,Невралогия Эндокринология Гинекология,Умумий Терапия,Оторинолорингология булимлари ташкил килинган.ва 25 урин жой тури билан таминланган.Палаталаримизда хамма шаройтлар мавжуд булиб люкс каторига киради.Соглом она ва бола клиникаси 2022 ийлдан буён она ва бола хамда нуронийларимизни саломатлигини мухофаза килиш,ерта ташхис ва сифатли даволаш ишларини амалга ошириб келмокда 
           </p>
 
-          {/* Features */}
-          <div className="grid grid-cols-3 gap-4">
-            {features.map((feature, index) => (
-              <div
-                key={feature.title}
-                className="flex items-center gap-3 p-4 bg-gray-50 rounded-xl animate-fade-in-up"
-                style={{ animationDelay: `${0.3 + 0.1 * index}s` }}
-              >
-                <div className="w-10 h-10 rounded-full bg-[#f4c430]/20 flex items-center justify-center">
-                  <feature.icon className="w-5 h-5 text-[#1e4a8d]" />
-                </div>
-                <span className="text-sm font-medium text-[#1e4a8d]">{feature.title}</span>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>
