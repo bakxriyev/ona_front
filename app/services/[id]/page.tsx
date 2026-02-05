@@ -87,9 +87,10 @@ export default function ServiceDetailPage() {
       data.append("appointment_date", formData.appointment_date)
       data.append("appointment_time", formData.appointment_time)
 
-      await api.post("/users", data, {
-        headers: { "Content-Type": "multipart/form-data" },
-      })
+      await fetch("/users", {
+  method: "POST",
+  body: data,
+})
 
       toast({
         title: t("Muvaffaqiyatli!", "Успешно!"),
