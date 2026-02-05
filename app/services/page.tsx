@@ -68,7 +68,7 @@ export default function ServicesPage() {
     setIsSubmitting(true)
 
     try {
-      // FormData for file upload if photo exists
+      // FormData yaratish
       const data = new FormData()
       data.append("full_name", formData.full_name)
       data.append("phone_number", formData.phone_number)
@@ -81,18 +81,15 @@ export default function ServicesPage() {
       data.append("appointment_date", formData.appointment_date)
       data.append("appointment_time", formData.appointment_time)
 
-      // Assuming api.post handles FormData or adjust to JSON if no file
-      await api.post("/users", data, {
-        headers: { "Content-Type": "multipart/form-data" },
-      })
+      // API chaqirish - FormData obyektini yuborish
+      await api.post("/users", data)
 
       toast({
         title: t("Muvaffaqiyatli!", "Успешно!"),
         description: t("Qabulga yozilish muvaffaqiyatli amalga oshirildi.", "Запись на прием успешно отправлена."),
-        variant: "success",
       })
       setIsModalOpen(false)
-      // Reset form
+      // Formani tozalash
       setFormData({
         full_name: "",
         phone_number: "",
@@ -104,6 +101,7 @@ export default function ServicesPage() {
         appointment_time: "",
       })
     } catch (error) {
+      console.error("Form submission error:", error)
       toast({
         title: t("Xatolik!", "Ошибка!"),
         description: t("Qabulga yozilishda xatolik yuz berdi.", "Произошла ошибка при записи на прием."),
@@ -289,7 +287,7 @@ export default function ServicesPage() {
                     <Label htmlFor="department" className="text-gray-700 font-medium mb-2 block">
                       {t("Bo'lim", "Отделение")}
                     </Label>
-                    <Select onValueChange={(value) => handleSelectChange("department", value)}>
+                    <Select onValueChange={(value) => handleSelectChange("department", value)} value={formData.department}>
                       <SelectTrigger className="rounded-xl">
                         <SelectValue placeholder={t("Tanlang", "Выберите")} />
                       </SelectTrigger>
@@ -297,7 +295,6 @@ export default function ServicesPage() {
                         <SelectItem value="Endokrinologiya">{t("Endokrinologiya", "Эндокринология")}</SelectItem>
                         <SelectItem value="Kardiologiya">{t("Kardiologiya", "Кардиология")}</SelectItem>
                         <SelectItem value="Nevrologiya">{t("Nevrologiya", "Неврология")}</SelectItem>
-                        {/* Qo'shimcha bo'limlar qo'shish mumkin */}
                       </SelectContent>
                     </Select>
                   </div>
@@ -305,14 +302,13 @@ export default function ServicesPage() {
                     <Label htmlFor="doctor_name" className="text-gray-700 font-medium mb-2 block">
                       {t("Shifokor nomi", "Имя врача")}
                     </Label>
-                    <Select onValueChange={(value) => handleSelectChange("doctor_name", value)}>
+                    <Select onValueChange={(value) => handleSelectChange("doctor_name", value)} value={formData.doctor_name}>
                       <SelectTrigger className="rounded-xl">
                         <SelectValue placeholder={t("Tanlang", "Выберите")} />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="Dr. Karimov">{t("Dr. Karimov", "Др. Каримов")}</SelectItem>
                         <SelectItem value="Dr. Aliyeva">{t("Dr. Aliyeva", "Др. Алиева")}</SelectItem>
-                        {/* Qo'shimcha shifokorlar qo'shish mumkin */}
                       </SelectContent>
                     </Select>
                   </div>
@@ -346,7 +342,7 @@ export default function ServicesPage() {
                         onChange={handleInputChange}
                         required
                         className="rounded-xl pl-10"
-                        min={new Date().toISOString().split("T")[0]} // Bugundan boshlab
+                        min={new Date().toISOString().split("T")[0]}
                       />
                       <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                     </div>
@@ -364,7 +360,7 @@ export default function ServicesPage() {
                         onChange={handleInputChange}
                         required
                         className="rounded-xl pl-10"
-                        step="1800" // 30 daqiqa interval
+                        step="1800"
                       />
                       <Clock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                     </div>

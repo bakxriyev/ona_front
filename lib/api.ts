@@ -119,9 +119,12 @@ export const api = {
 
   // ========== SLIDER ==========
   getSliders: () => fetchAPI<Slider[]>("/slider"),
+ 
 
   // ========== RESUME (Rezyume yuborish) ==========
-  submitResume: (data: FormData) => postAPI<Resume>("/resume", data),
+submitResume: (data: FormData) => postAPI<Resume>("/resume", data),
+
+ post: <T = any>(endpoint: string, data: FormData | object) => postAPI<T>(endpoint, data),
 }
 
 export default api
