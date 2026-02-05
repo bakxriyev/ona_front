@@ -94,6 +94,7 @@ export interface Service {
   photo: string | null
   video: string | null
   created_at?: string
+  details: any
 }
 
 export interface About {

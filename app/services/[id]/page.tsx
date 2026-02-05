@@ -95,7 +95,6 @@ export default function ServiceDetailPage() {
       toast({
         title: t("Muvaffaqiyatli!", "Успешно!"),
         description: t("Qabulga yozilish muvaffaqiyatli amalga oshirildi.", "Запись на прием успешно отправлена."),
-        variant: "success",
       })
       setIsModalOpen(false)
       setFormData({
