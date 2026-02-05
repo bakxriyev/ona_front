@@ -36,12 +36,6 @@ export default function ContactPage() {
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
             {t("Biz bilan bog'lanish", "Связаться с нами")}
           </h1>
-          <p className="text-white/80 max-w-2xl">
-            {t(
-              "Akfa Medline klinikasiga murojaat qilish yuqori sifatli tibbiy xizmatdan foydalanish demakdir.",
-              "Обращение в клинику Akfa Medline означает получение высококачественных медицинских услуг.",
-            )}
-          </p>
 
           <button className="mt-6 flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm">
             {t("Pastga aylantiring", "Прокрутите вниз")} <ChevronDown className="w-4 h-4" />

@@ -17,7 +17,7 @@ const navItems = [
   { labelUz: "Bo'limlar", labelRu: "Отделения", href: "/departments", hasDropdown: true, dropdownType: "departments" },
   { labelUz: "Shifokorlar", labelRu: "Врачи", href: "/doctors", hasDropdown: false },
   { labelUz: "Blog", labelRu: "Блог", href: "/blog", hasDropdown: false },
-  { labelUz: "Kontaktlar", labelRu: "Контакты", href: "/contact", hasDropdown: false },
+  // { labelUz: "Kontaktlar", labelRu: "Контакты", href: "/contact", hasDropdown: false },
   // { labelUz: "Karyera", labelRu: "Карьера", href: "/career", hasDropdown: false },
 ]
 
