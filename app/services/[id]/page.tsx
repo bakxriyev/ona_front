@@ -280,15 +280,19 @@ export default function ServiceDetailPage() {
             {service.details && service.details.length > 0 && (
               <div className="mt-16">
                 <h3 className="text-3xl font-extrabold text-gray-900 mb-8 text-center lg:text-left">{t("Batafsil ma'lumotlar", "Подробности")}</h3>
-                <Accordion type="single" collapsible className="w-full">
-                  {service.details.map((detail, index) => {
+                <Accordion type="single" collapsible className="w-full space-y-4">
+                  {service.details.map((detail:any, index:any) => {
                     const detailVideoUrl = detail.video ? getVideoUrl("services", detail.video) : null
                     return (
-                      <AccordionItem key={detail.id} value={`item-${index}`} className="border-b border-gray-200">
-                        <AccordionTrigger className="text-left text-2xl font-bold text-gray-800 hover:text-[#d32f2f] transition-colors py-6">
+                      <AccordionItem 
+                        key={detail.id} 
+                        value={`item-${index}`} 
+                        className="rounded-lg border border-gray-200 bg-white shadow-sm overflow-hidden"
+                      >
+                        <AccordionTrigger className="text-left text-2xl font-bold text-gray-800 hover:text-[#d32f2f] transition-colors py-6 px-6 hover:bg-gray-50">
                           {language === "ru" ? detail.title_ru : detail.title}
                         </AccordionTrigger>
-                        <AccordionContent className="text-gray-600 text-lg leading-relaxed py-6">
+                        <AccordionContent className="text-gray-600 text-lg leading-relaxed py-6 px-6 bg-gray-50">
                           <p className="mb-4">{language === "ru" ? detail.about_ru : detail.about}</p>
                           <p className="font-medium text-[#d32f2f] mb-4 text-xl">
                             {t("Narx", "Цена")}: {language === "ru" ? detail.price_ru : detail.price}
