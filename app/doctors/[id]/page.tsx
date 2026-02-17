@@ -99,8 +99,8 @@ export default function DoctorDetailPage() {
             </h1>
             <p className="text-white/80 max-w-2xl text-lg leading-relaxed">
               {t(
-                "Akfa Medline shifokorlari har bir bemorga ishonchli va g'amxo'rlik qiluvchi yuqori malakali mutaxassislardir.",
-                "Врачи Akfa Medline - высококвалифицированные специалисты, заботящиеся о каждом пациенте.",
+                "Ona bola klinikasi shifokorlari har bir bemorga ishonchli va g'amxo'rlik qiluvchi yuqori malakali mutaxassislardir.",
+                "Врачи Ona bola - высококвалифицированные специалисты, заботящиеся о каждом пациенте.",
               )}
             </p>
           </div>

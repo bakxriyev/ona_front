@@ -29,16 +29,12 @@ export function Footer() {
 
   const menuItems = [
     { labelUz: "Biz haqimizda", labelRu: "О нас", href: "/about" },
-    { labelUz: "Sug'urta", labelRu: "Страхование", href: "/insurance" },
     { labelUz: "Xizmatlar", labelRu: "Услуги", href: "/services" },
     { labelUz: "Shifokorlar", labelRu: "Врачи", href: "/doctors" },
     { labelUz: "Blog", labelRu: "Блог", href: "/blog" },
   ]
 
   const detailItems = [
-    { labelUz: "Karyera", labelRu: "Карьера", href: "/career" },
-    { labelUz: "AMUH hayoti", labelRu: "Жизнь AMUH", href: "/news" },
-    { labelUz: "Kontaktlar", labelRu: "Контакты", href: "/contact" },
   ]
 
   // Static defaults
@@ -138,10 +134,10 @@ export function Footer() {
 
               {/* Social links */}
               <div className="flex gap-4">
-                <a href="https://www.instagram.com/endokrinolog_uz_/" className="text-gray-400 hover:text-gray-600 transition-colors">
+                <a href="https://www.instagram.com/ona_bola_clinic/" className="text-gray-400 hover:text-gray-600 transition-colors">
                   <Instagram className="w-5 h-5" />
                 </a>
-                <a href="https://t.me/endokrinologiya_kardialogiya" className="text-gray-400 hover:text-gray-600 transition-colors">
+                <a href="https://t.me/ona_bolalar1" className="text-gray-400 hover:text-gray-600 transition-colors">
                   <Send className="w-5 h-5" />
                 </a>
               </div>
@@ -161,19 +157,6 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Column 3: Batafsil */}
-            <div>
-              <h4 className="font-semibold text-gray-900 mb-4">{t("Batafsil", "Подробнее")}</h4>
-              <ul className="space-y-3 text-sm">
-                {detailItems.map((item) => (
-                  <li key={item.href}>
-                    <Link href={item.href} className="text-gray-600 hover:text-[#c41e3a] transition-colors">
-                      {language === "ru" ? item.labelRu : item.labelUz}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
 
             {/* Column 4: Address - static */}
             <div>
@@ -187,7 +170,10 @@ export function Footer() {
             <div>
               <h4 className="font-semibold text-gray-900 mb-4">{t("Kontaktlar", "Контакты")}</h4>
               <div className="text-sm text-gray-600 space-y-2">
-                <p>{about?.phone || "+998 77 313 01 30"}</p>
+                <p>{"95-818-84-42 "}</p>
+                <p>{"95-818-84-43"}</p>
+                <p>{"90-820-67-87"}</p>
+
                 <p>{about?.gmail || "info@onabolaclinic.uz"}</p>
               </div>
             </div>

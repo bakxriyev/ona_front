@@ -27,10 +27,7 @@ const languages = [
 ]
 
 const aboutSubItems = [
-  { labelUz: "Biz haqimizda", labelRu: "О нас", href: "/about" },
-  { labelUz: "Missiya", labelRu: "Миссия", href: "/about#mission" },
-  { labelUz: "Tarix", labelRu: "История", href: "/about#history" },
-  { labelUz: "Sertifikatlar", labelRu: "Сертификаты", href: "/about#certificates" },
+  { labelUz: "Biz haqimizda", labelRu: "О нас", href: "/about" }
 ]
 
 export function Header() {
@@ -237,12 +234,7 @@ export function Header() {
 
           {/* Right side - CTA & Language */}
           <div className="hidden lg:flex items-center gap-4">
-            <Link
-              href="/results"
-              className="bg-gradient-to-r from-[#d32f2f] to-[#f44336] text-white px-6 py-2.5 rounded-full text-sm font-medium hover:shadow-lg hover:shadow-red-500/50 transition-all hover:scale-105"
-            >
-              {t("Tahlil javoblari", "Результаты анализов")}
-            </Link>
+            
             <div className="flex items-center border border-slate-600 rounded-full overflow-hidden bg-slate-800/50">
               {languages.map((lang) => (
                 <button

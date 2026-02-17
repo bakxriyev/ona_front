@@ -9,139 +9,184 @@ import { useLanguage } from "../../context/language-context"
 import { api } from "@/lib/api"
 import { getImageUrl } from "../../lib/config"
 import type { About, Stat, Feature } from "@/lib/types"
+import { Heart, Stethoscope, Activity, Cross, Download } from "lucide-react"
+import { Button } from "@/components/ui/button"
+
+const backgroundIcons = [Heart, Stethoscope, Activity, Cross, Heart, Stethoscope, Activity, Cross]
 
 export default function AboutPage() {
   const { language, t } = useLanguage()
   const [about, setAbout] = useState<About | null>(null)
   const [stats, setStats] = useState<Stat[]>([])
   const [features, setFeatures] = useState<Feature[]>([])
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
 
-  useEffect(() => {
-    Promise.all([
-      api.getAbout().catch(() => []),
-      api.getStats().catch(() => []),
-      api.getFeatures().catch(() => []),
-    ]).then(([aboutData, statsData, featuresData]) => {
-      if (aboutData && aboutData.length > 0) {
-        setAbout(aboutData[0])
-      }
-      setStats(statsData)
-      setFeatures(featuresData)
-      setIsLoading(false)
-    })
-  }, [])
+  const detailedAboutUz = `Шифохонамиз 2022 ийл октябрь ойида уз иш фаолятини бошлаган.Шифохонамаз Тошкент шахар Бектемир тумани  Обод кучаси 123 уйда жойлашган булиб,клиникамизда Педиатрия,Невралогия Эндокринология Гинекология,Умумий Терапия,Оторинолорингология булимлари ташкил килинган.ва 25 урин жой тури билан таминланган.Палаталаримизда хамма шаройтлар мавжуд булиб люкс каторига киради.Соглом она ва бола клиникаси 2022 ийлдан буён она ва бола хамда нуронийларимизни саломатлигини мухофаза килиш,ерта ташхис ва сифатли даволаш ишларини амалга ошириб келмокда .Клиникамиз замонавий тиббий жихозлар билан таминланган булиб ,Юкори малакали шифокорлар томонидан беморларга сифатли тиббий хизмат  курсатилади.Клиника иш вакти 24/7 иш фаолятида булиб,Клиникамизда Лабараторя,Физотерапия,Амбулатор даво чоралари ,статционар даволаш,тез тиббий ёордам хизмати 1299 , билимли ва малакали мехрибон,мехнатсевар ходимлар хизмат курсатади..Шу 2024 йилдан буён Козокстон,Тожикистон Давлатларидан жуда сезиларли даражада беморлар окими купаймокда.
+Ва биз келгусида чет эл фукоролари учун янада купрок енгилликлар билан уларни хурсанд килиш истагидамиз.
+Шу кунга кадар бизнинг Соглом она ва бола клиникамизда  жами 2 500 та статционар ва 25.000 нан ортик амбулатор беморларга тиббий хизмат курсатилган.
+Бу йилги иш режамизда Жаррахлик амалётлари олийй тойфали хирург шифокорлар  томонидан  енгзамонавий хирургияга мулжалланган Европа стандартларига жавоб берадиган тиббий  жихозлар билан таминланган  жаррохлик булими ишга туширилади 
+Келажакда биз 300 уринга мулжалланган Тугрик комплекси 2026 ийлга очилиши режалаштирилган ва бу йуналишда курилиш ишлари жадал равишда олиб борилмокда.
+Янги тугрик комплексимизда куйдаги лойхалар амалга оширилади.
+*Хомладорликни кузатиш ва назорат килиш дастури
+*Янги тугулган чакалоклар учун комплекс текширувлар
+*Болаларни эмлаш ва ривожланиш мониторинги
+*УЗИ ва лабароторя тахлиллари оркали ерта ташхислаш 
+*Ойлалар учун соглом турмуш тарзи буйича маслахатлар
+*Огриксиз замонавий усулда тугрук амалётлари амалга оширилади
+Клиникада беморларни кабул килиш ,кулай мухитда ,халкаро стандартларга мос равишда ташкил етилган .Хар бир мижозга индивидуал ёндашув таминланади .
+«Соглом она ва бола»клиникаси ахолининг соглом авлодни тарбиялаш йулида ишончли хамкори сифатида фаолят курсатмокда .Тиббий хизмат сифати ,мехир ва масулят клиникамизнинг асосий кадрятларидир .
+Бола бахти она соглигида
+`
+
+  const detailedAboutRu = `Шифохонамиз 2022 ийл октябрь ойида уз иш фаолятини бошлаган.Шифохонамаз Тошкент шахар Бектемир тумани  Обод кучаси 123 уйда жойлашган булиб,клиникамизда Педиатрия,Невралогия Эндокринология Гинекология,Умумий Терапия,Оторинолорингология булимлари ташкил килинган.ва 25 урин жой тури билан таминланган.Палаталаримизда хамма шаройтлар мавжуд булиб люкс каторига киради.Соглом она ва бола клиникаси 2022 ийлдан буён она ва бола хамда нуронийларимизни саломатлигини мухофаза килиш,ерта ташхис ва сифатли даволаш ишларини амалга ошириб келмокда .Клиникамиз замонавий тиббий жихозлар билан таминланган булиб ,Юкори малакали шифокорлар томонидан беморларга сифатли тиббий хизмат  курсатилади.Клиника иш вакти 24/7 иш фаолятида булиб,Клиникамизда Лабараторя,Физотерапия,Амбулатор даво чоралари ,статционар даволаш,тез тиббий ёордам хизмати 1299 , билимли ва малакали мехрибон,мехнатсевар ходимлар хизмат курсатади..Шу 2024 йилдан буён Козокстон,Тожикистон Давлатларидан жуда сезиларли даражада беморлар окими купаймокда.
+Ва биз келгусида чет эл фукоролари учун янада купрок енгилликлар билан уларни хурсанд килиш истагидамиз.
+Шу кунга кадар бизнинг Соглом она ва бола клиникамизда  жами 2 500 та статционар ва 25.000 нан ортик амбулатор беморларга тиббий хизмат курсатилган.
+Бу йилги иш режамизда Жаррахлик амалётлари олийй тойфали хирург шифокорлар  томонидан  енгзамонавий хирургияга мулжалланган Европа стандартларига жавоб берадиган тиббий  жихозлар билан таминланган  жаррохлик булими ишга туширилади 
+Келажакда биз 300 уринга мулжалланган Тугрик комплекси 2026 ийлга очилиши режалаштирилган ва бу йуналишда курилиш ишлари жадал равишда олиб борилмокда.
+Янги тугрик комплексимизда куйдаги лойхалар амалга оширилади.
+*Хомладорликни кузатиш ва назорат килиш дастури
+*Янги тугулган чакалоклар учун комплекс текширувлар
+*Болаларни эмлаш ва ривожланиш мониторинги
+*УЗИ ва лабароторя тахлиллари оркали ерта ташхислаш 
+*Ойлалар учун соглом турмуш тарзи буйича маслахатлар
+*Огриксиз замонавий усулда тугрук амалётлари амалга оширилади
+Клиникада беморларни кабул килиш ,кулай мухитда ,халкаро стандартларга мос равишда ташкил етилган .Хар бир мижозга индивидуал ёндашув таминланади .
+«Соглом она ва бола»клиникаси ахолининг соглом авлодни тарбиялаш йулида ишончли хамкори сифатида фаолят курсатмокда .Тиббий хизмат сифати ,мехир ва масулят клиникамизнинг асосий кадрятларидир .
+Бола бахти она соглигида`
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 relative overflow-hidden">
+      <div className="fixed inset-0 overflow-hidden pointer-events-none opacity-5">
+        {backgroundIcons.map((Icon, i) => (
+          <div
+            key={i}
+            className="absolute text-[#1e4a8d]"
+            style={{
+              left: `${(i * 15) % 100}%`,
+              top: `${(i * 20) % 100}%`,
+              animation: `float-bg ${10 + i * 2}s ease-in-out infinite`,
+              animationDelay: `${i * 1.2}s`,
+            }}
+          >
+            <Icon className="w-24 h-24 md:w-32 md:h-32" />
+          </div>
+        ))}
+      </div>
+
       <Header />
 
-      {/* Hero */}
-      <div className="relative h-[400px] bg-gradient-to-r from-[#1e4a8d] to-[#0f2a4a]">
-        <div className="absolute inset-0 overflow-hidden opacity-20">
-          {[...Array(5)].map((_, i) => (
+      {/* Hero - Improved with better typography and subtle glow */}
+      <div className="relative h-[450px] bg-gradient-to-br from-[#1e4a8d] via-[#0d7377] to-[#1e4a8d] overflow-hidden shadow-2xl">
+        <div className="absolute inset-0 opacity-20">
+          {[...Array(6)].map((_, i) => (
             <div
               key={i}
-              className="absolute h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent w-full"
-              style={{ top: `${20 + i * 15}%` }}
+              className="absolute h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent w-full animate-pulse-line"
+              style={{
+                top: `${15 + i * 15}%`,
+                animationDelay: `${i * 0.4}s`,
+                animationDuration: `${2.5 + i * 0.5}s`,
+              }}
             />
           ))}
         </div>
-        <div className="relative h-full flex flex-col items-center justify-center text-center px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 animate-fade-in-up">
-            {language === "ru"
-              ? about?.title_ru || t("О клинике", "О клинике")
-              : about?.title || t("Klinika haqida", "Klinika haqida")}
+        <div className="relative h-full flex flex-col items-center justify-center text-center px-4 z-10">
+          <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-4 animate-fade-in-up drop-shadow-2xl tracking-wide">
+            {language === "ru" ? "О клинике" : "Klinika haqida"}
           </h1>
-          <p className="text-white/80 text-lg max-w-2xl animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-            {t(
-              "Markaziy Osiyodagi eng yirik ko'p tarmoqli universitet klinikasi",
-              "Крупнейшая многопрофильная университетская клиника в Центральной Азии",
-            )}
+          <p
+            className="text-white/90 text-xl max-w-3xl animate-fade-in-up drop-shadow-lg font-light"
+            style={{ animationDelay: "0.3s" }}
+          >
+            {language === "ru" ? "Мы заботимся о вашем здоровье с душой и профессионализмом" : "Sizning salomatligingiz biz uchun muhim - professional va mehribonlik bilan"}
           </p>
         </div>
       </div>
 
-      <main className="max-w-7xl mx-auto px-4 py-16">
-        {/* About Section */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
-          <div className="animate-fade-in-up">
+      <main className="max-w-7xl mx-auto px-4 py-20 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
+          <div className="animate-fade-in-left">
             {isLoading ? (
-              <Skeleton className="h-80 w-full rounded-2xl" />
+              <Skeleton className="h-96 w-full rounded-3xl" />
             ) : (
-              <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl">
+              <div className="relative h-96 rounded-3xl overflow-hidden shadow-2xl group">
                 <Image
-                  src={
-                    about?.logo
-                      ? getImageUrl("about", about.logo)
-                      : "/placeholder.svg?height=400&width=600&query=modern hospital building"
-                  }
-                  alt="Akfa Medline University Hospital"
+                  src='/header.jpg'
+                  alt="Sog'lom Ona va Bola"
                   fill
-                  className="object-cover"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             )}
           </div>
 
-          <div className="animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-            <h2 className="text-3xl font-bold text-[#1e4a8d] mb-6">{t("Bizning tarix", "Наша история")}</h2>
+          <div className="animate-fade-in-right" style={{ animationDelay: "0.2s" }}>
+            <h2 className="text-4xl font-extrabold bg-gradient-to-r from-[#1e4a8d] via-[#0d7377] to-[#d32f2f] bg-clip-text text-transparent mb-6">
+              {t("Bizning haqimizda", "О нас")}
+            </h2>
             {isLoading ? (
               <div className="space-y-4">
-                <Skeleton className="h-4 w-full" />
-                <Skeleton className="h-4 w-full" />
-                <Skeleton className="h-4 w-3/4" />
+                <Skeleton className="h-5 w-full" />
+                <Skeleton className="h-5 w-full" />
+                <Skeleton className="h-5 w-4/5" />
               </div>
             ) : (
-              <div className="text-gray-600 leading-relaxed space-y-4">
-                <p>{language === "ru" ? about?.description_ru : about?.description}</p>
+              <div className="text-gray-700 leading-relaxed space-y-5 text-lg">
+                {(language === "ru" ? detailedAboutRu : detailedAboutUz).split("\n\n").map((paragraph, index) => (
+                  <p key={index} className="text-base font-medium">
+                    {paragraph}
+                  </p>
+                ))}
               </div>
             )}
           </div>
         </div>
 
-        {/* Stats from backend */}
+        {/* Stats - Enhanced with gradients and hover effects */}
         {stats.length > 0 && (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-24">
             {stats.map((stat, index) => (
               <div
                 key={stat.id}
-                className="bg-white rounded-2xl p-8 text-center shadow-lg animate-fade-in-up"
-                style={{ animationDelay: `${0.1 * index}s` }}
+                className="bg-white rounded-3xl p-10 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-3 animate-fade-in-up border border-gray-200/50"
+                style={{ animationDelay: `${0.15 * index}s` }}
               >
-                <div className="text-4xl font-bold text-[#d32f2f] mb-2">{stat.value}</div>
-                <div className="text-gray-600">{language === "ru" ? stat.label_ru : stat.label}</div>
+                <div className="text-5xl font-extrabold bg-gradient-to-r from-[#d32f2f] to-[#b71c1c] bg-clip-text text-transparent mb-3">
+                  {stat.value}
+                </div>
+                <div className="text-gray-700 font-semibold text-lg">{language === "ru" ? stat.label_ru : stat.label}</div>
               </div>
             ))}
           </div>
         )}
 
-        {/* Features from backend */}
+        {/* Features - Improved card design with icons and shadows */}
         {features.length > 0 && (
-          <div className="mb-20">
-            <h2 className="text-3xl font-bold text-[#1e4a8d] mb-8 text-center">{t("Nima uchun biz?", "Почему мы?")}</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mb-24">
+            <h2 className="text-4xl font-extrabold text-[#1e4a8d] mb-10 text-center">{t("Nima uchun biz?", "Почему мы?")}</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {features.map((feature, index) => (
                 <div
                   key={feature.id}
-                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 animate-fade-in-up"
-                  style={{ animationDelay: `${0.1 * index}s` }}
+                  className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 animate-fade-in-up border border-gray-200/50"
+                  style={{ animationDelay: `${0.15 * index}s` }}
                 >
                   {feature.icon && (
-                    <div className="w-14 h-14 rounded-full bg-[#0d7377]/10 flex items-center justify-center mb-4">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#0d7377] to-[#1e4a8d] flex items-center justify-center mb-5 shadow-md">
                       <Image
                         src={getImageUrl("features", feature.icon) || "/placeholder.svg"}
                         alt=""
-                        width={28}
-                        height={28}
-                        className="w-7 h-7"
+                        width={32}
+                        height={32}
+                        className="w-8 h-8 brightness-0 invert"
                       />
                     </div>
                   )}
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">
                     {language === "ru" ? feature.title_ru : feature.title}
                   </h3>
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-gray-600 text-base leading-relaxed">
                     {language === "ru" ? feature.description_ru : feature.description}
                   </p>
                 </div>
@@ -150,18 +195,97 @@ export default function AboutPage() {
           </div>
         )}
 
-        {/* Mission */}
+        {/* Mission - Enhanced with more overlays and typography */}
         {about?.mission && (
-          <div className="bg-gradient-to-r from-[#1e4a8d] to-[#0f2a4a] rounded-2xl p-8 md:p-12 text-white animate-fade-in-up">
-            <h2 className="text-3xl font-bold mb-6">{t("Bizning missiyamiz", "Наша миссия")}</h2>
-            <p className="text-white/90 text-lg leading-relaxed">
+          <div className="bg-gradient-to-br from-[#1e4a8d] via-[#0d7377] to-[#1e4a8d] rounded-3xl p-10 md:p-16 text-white animate-fade-in-up shadow-2xl relative overflow-hidden mb-24">
+            <div className="absolute inset-0 opacity-15">
+              <Heart className="absolute top-6 right-6 w-40 h-40 animate-pulse" />
+              <Stethoscope className="absolute bottom-6 left-6 w-32 h-32 animate-pulse" style={{ animationDelay: "0.5s" }} />
+            </div>
+            <h2 className="text-4xl font-extrabold mb-8 relative z-10">{t("Bizning missiyamiz", "Наша миссия")}</h2>
+            <p className="text-white/90 text-xl leading-relaxed relative z-10 font-light">
               {language === "ru" ? about.mission_ru : about.mission}
             </p>
           </div>
         )}
+
+        {/* New Section: Certificates - Added at the bottom with images and download buttons */}
+        <div className="mb-24">
+          <h2 className="text-4xl font-extrabold text-[#1e4a8d] mb-10 text-center">{t("Klinika sertifikatlari", "Сертификаты клиники")}</h2>
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Certificate 1 */}
+            <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 animate-fade-in-up border border-gray-200/50">
+              <div className="relative h-80 mb-6 rounded-2xl overflow-hidden shadow-md">
+                <Image
+                  src="/s2.png"
+                  alt="Klinika sertifikati 1"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div className="text-center">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  {language === "ru" ? "Сертификат качества 1" : "Sifat sertifikati 1"}
+                </h3>
+                <a href="/ser2.pdf" download="certificate1.pdf">
+                  <Button variant="default" className="bg-[#1e4a8d] hover:bg-[#0d7377] text-white flex items-center gap-2">
+                    <Download className="w-5 h-5" />
+                    {t("Yuklab olish", "Скачать PDF")}
+                  </Button>
+                </a>
+              </div>
+            </div>
+
+            {/* Certificate 2 */}
+            <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 animate-fade-in-up border border-gray-200/50" style={{ animationDelay: "0.2s" }}>
+              <div className="relative h-80 mb-6 rounded-2xl overflow-hidden shadow-md">
+                <Image
+                  src="/s.png"
+                  alt="Klinika sertifikati 2"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div className="text-center">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  {language === "ru" ? "Сертификат аккредитации 2" : "Akreditatsiya sertifikati 2"}
+                </h3>
+                <a href="/se1.pdf" download="certificate2.pdf">
+                  <Button variant="default" className="bg-[#1e4a8d] hover:bg-[#0d7377] text-white flex items-center gap-2">
+                    <Download className="w-5 h-5" />
+                    {t("Yuklab olish", "Скачать PDF")}
+                  </Button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
 
       <Footer />
+
+      {/* Custom animations - Enhanced for smoother effects */}
+      <style jsx>{`
+        @keyframes float-bg {
+          0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.3; }
+          33% { transform: translate(-40px, -50px) rotate(-15deg); opacity: 0.6; }
+          66% { transform: translate(40px, -30px) rotate(15deg); opacity: 0.5; }
+        }
+        @keyframes pulse-line {
+          0%, 100% { opacity: 0.3; transform: translateX(-100%); }
+          50% { opacity: 0.6; transform: translateX(100%); }
+        }
+        @keyframes fade-in-left {
+          from { opacity: 0; transform: translateX(-50px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fade-in-right {
+          from { opacity: 0; transform: translateX(50px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-fade-in-left { animation: fade-in-left 1s ease-out; }
+        .animate-fade-in-right { animation: fade-in-right 1s ease-out; }
+      `}</style>
     </div>
   )
 }

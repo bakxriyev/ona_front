@@ -32,10 +32,10 @@ export default function BlogPage() {
       <Header />
 
       {/* Hero */}
-      <div className="bg-[#d32f2f] py-12">
+      <div className="bg-[#669ad6] py-12">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h1 className="text-3xl md:text-4xl font-bold text-white italic">
-            {t("Akfa Medline University Hospital maqolalari", "Статьи Akfa Medline University Hospital")}
+            {t("Maqolalari", "Статьи ")}
           </h1>
         </div>
       </div>

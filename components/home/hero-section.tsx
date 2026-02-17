@@ -56,11 +56,10 @@ interface TimeSlot {
 
 const quickActions = [
   { icon: Plus, label: "Qabulga yozilish", label_ru: "Записаться на прием", href: "/appointment" },
-  { icon: Globe, label: "Chet elliklar uchun", label_ru: "Для иностранцев", href: "/international" },
-  { icon: Shield, label: "Sug'urta", label_ru: "Страховка", href: "/insurance" },
+  { icon: Globe, label: "Biz haqimizda", label_ru: "Biz haqimizda", href: "/about" },
+  { icon: Shield, label: "Yangiliklar", label_ru: "Yangiliklar", href: "/news" },
   { icon: Layers, label: "Bo'limlar", label_ru: "Отделения", href: "/departments" },
-  { icon: Users, label: "Shifokorlar", label_ru: "Врачи", href: "/doctors" },
-  { icon: Briefcase, label: "Bo'sh ish o'rinlari", label_ru: "Вакансии", href: "/career" },
+  { icon: Users, label: "Shifokorlar", label_ru: "Врачи", href: "/doctors" }
 ]
 
 const heroContent = {
@@ -203,14 +202,15 @@ const ContactModal = ({ isOpen, onClose, onAppointmentOpen, language }: ContactM
             </div>
             <div className="flex-1">
               <h3 className="font-semibold text-gray-800">{content.phone}</h3>
-              <p className="text-sm text-gray-600">+9989 55 902 10 10</p>
-              <p className="text-sm text-gray-600">+998 77 313 01 30</p>
+             <p>{"95-818-84-42 "}</p>
+                <p>{"95-818-84-43"}</p>
+                <p>{"90-820-67-87"}</p>
             </div>
           </a>
 
           {/* Telegram */}
           <a
-            href="https://t.me/endokrinologiya_kardialogiya"
+            href="https://www.instagram.com/ona_bolalar1/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-4 p-4 rounded-xl border border-gray-200 hover:bg-cyan-50 hover:border-cyan-300 transition-all group"
@@ -226,7 +226,7 @@ const ContactModal = ({ isOpen, onClose, onAppointmentOpen, language }: ContactM
 
           {/* Instagram */}
           <a
-            href="https://www.instagram.com/endokrinolog_uz_/"
+            href="https://www.instagram.com/ona_bola_clinic/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-4 p-4 rounded-xl border border-gray-200 hover:bg-pink-50 hover:border-pink-300 transition-all group"
@@ -236,7 +236,7 @@ const ContactModal = ({ isOpen, onClose, onAppointmentOpen, language }: ContactM
             </div>
             <div className="flex-1">
               <h3 className="font-semibold text-gray-800">{content.instagram}</h3>
-              <p className="text-sm text-gray-600">endokrinolog_uz_</p>
+              <p className="text-sm text-gray-600">ona_bola_clinic</p>
             </div>
           </a>
 
@@ -689,27 +689,7 @@ export function HeroSection({ isLoading }: HeroSectionProps) {
                 </Link>
               </div>
 
-              {/* Stats */}
-              <div className="flex gap-8 pt-8 animate-fade-in-up" style={{ animationDelay: "0.5s" }}>
-                <div>
-                  <div className="text-4xl font-bold bg-gradient-to-r from-red-700 to-red-900 bg-clip-text text-transparent">
-                    15+
-                  </div>
-                  <div className="text-sm text-gray-600">{language === "ru" ? "Лет опыта" : "Yillik tajriba"}</div>
-                </div>
-                <div>
-                  <div className="text-4xl font-bold bg-gradient-to-r from-red-700 to-red-900 bg-clip-text text-transparent">
-                    200+
-                  </div>
-                  <div className="text-sm text-gray-600">{language === "ru" ? "Специалистов" : "Mutaxassis"}</div>
-                </div>
-                <div>
-                  <div className="text-4xl font-bold bg-gradient-to-r from-red-700 to-red-900 bg-clip-text text-transparent">
-                    50K+
-                  </div>
-                  <div className="text-sm text-gray-600">{language === "ru" ? "Пациентов" : "Bemor"}</div>
-                </div>
-              </div>
+              
             </div>
 
             {/* Right Content - Image Slider */}
