@@ -66,7 +66,7 @@ const heroContent = {
   uz: {
     title: "Sizga bo'lgan g'amxo'rligimiz —",
     titleSecond: "bizning kasbimiz.",
-    subtitle: "Markaziy Osiyodagi eng yirik ko'p tarmoqli universitet klinikasi.",
+    subtitle: "Ona va bola salomatligi — kelajak kafolati",
     buttonPatients: "Biz bilan bog'lanish",
     buttonDoctors: "Shifokorlarimiz haqida",
     appointmentModal: {
@@ -103,7 +103,7 @@ const heroContent = {
   ru: {
     title: "Забота о вас —",
     titleSecond: "наша профессия.",
-    subtitle: "Крупнейшая многопрофильная университетская клиника в Центральной Азии.",
+    subtitle: "Здоровье матери и ребёнка — гарантия будущего",
     buttonPatients: "Связаться с нами",
     buttonDoctors: "О наших врачах",
     appointmentModal: {

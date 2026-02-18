@@ -17,8 +17,6 @@ const navItems = [
   { labelUz: "Bo'limlar", labelRu: "Отделения", href: "/departments", hasDropdown: true, dropdownType: "departments" },
   { labelUz: "Shifokorlar", labelRu: "Врачи", href: "/doctors", hasDropdown: false },
   { labelUz: "Blog", labelRu: "Блог", href: "/blog", hasDropdown: false },
-  // { labelUz: "Kontaktlar", labelRu: "Контакты", href: "/contact", hasDropdown: false },
-  // { labelUz: "Karyera", labelRu: "Карьера", href: "/career", hasDropdown: false },
 ]
 
 const languages = [
@@ -27,7 +25,7 @@ const languages = [
 ]
 
 const aboutSubItems = [
-  { labelUz: "Biz haqimizda", labelRu: "О нас", href: "/about" }
+  { labelUz: "Biz haqimizda", labelRu: "О нас", href: "/about" },
 ]
 
 export function Header() {
@@ -86,12 +84,12 @@ export function Header() {
               ))}
             </div>
             {about?.logo && (
-              <div className="col-span-2 flex justify-end items-center pt-4 border-t mt-4">
+              <div className="col-span-2 flex justify-end items-center pt-12 border-t mt-12">
                 <Image
                   src={getImageUrl("about", about.logo) || "/placeholder.svg"}
                   alt="Logo"
-                  width={250}
-                  height={100}
+                  width={500}
+                  height={500}
                   className="h-12 w-auto object-contain"
                 />
               </div>
@@ -180,17 +178,19 @@ export function Header() {
   return (
     <header className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 sticky top-0 z-50 shadow-lg border-b border-slate-700/50">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between h-24">
-          <Link href="/" className="flex items-center gap-2">
+        <div className="flex items-center justify-between h-28">
+
+          {/* ✅ Logo - kattaroq */}
+          <Link href="/" className="flex items-center gap-2 flex-shrink-0">
             {isLoading ? (
-              <div className="h-20 w-48 bg-slate-700 animate-pulse rounded" />
+              <div className="h-24 w-64 bg-slate-700 animate-pulse rounded" />
             ) : about?.logo ? (
               <Image
                 src={getImageUrl("about", about.logo) || "/placeholder.svg"}
-                alt={"Logo"}
-                width={220}
-                height={90}
-                className="h-20 w-auto object-contain brightness-0 invert"
+                alt="Logo"
+                width={320}
+                height={120}
+                className="h-24 w-auto object-contain brightness-0 invert"
               />
             ) : (
               <span className="text-3xl font-bold text-white">LOGO</span>
@@ -232,9 +232,8 @@ export function Header() {
             ))}
           </nav>
 
-          {/* Right side - CTA & Language */}
+          {/* Right side - Language switcher */}
           <div className="hidden lg:flex items-center gap-4">
-            
             <div className="flex items-center border border-slate-600 rounded-full overflow-hidden bg-slate-800/50">
               {languages.map((lang) => (
                 <button
@@ -242,7 +241,9 @@ export function Header() {
                   onClick={() => setLanguage(lang.code)}
                   className={cn(
                     "px-3 py-1 text-sm font-medium transition-colors",
-                    language === lang.code ? "bg-[#d32f2f] text-white" : "text-white/80 hover:bg-slate-700",
+                    language === lang.code
+                      ? "bg-[#d32f2f] text-white"
+                      : "text-white/80 hover:bg-slate-700",
                   )}
                 >
                   {lang.label}
@@ -316,7 +317,9 @@ export function Header() {
                     onClick={() => setLanguage(lang.code)}
                     className={cn(
                       "px-3 py-1 text-sm font-medium transition-colors",
-                      language === lang.code ? "bg-[#d32f2f] text-white" : "text-white/80 hover:bg-slate-700",
+                      language === lang.code
+                        ? "bg-[#d32f2f] text-white"
+                        : "text-white/80 hover:bg-slate-700",
                     )}
                   >
                     {lang.label}
