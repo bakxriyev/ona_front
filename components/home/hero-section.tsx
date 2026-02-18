@@ -56,8 +56,8 @@ interface TimeSlot {
 
 const quickActions = [
   { icon: Plus, label: "Qabulga yozilish", label_ru: "Записаться на прием", href: "/appointment" },
-  { icon: Globe, label: "Biz haqimizda", label_ru: "Biz haqimizda", href: "/about" },
-  { icon: Shield, label: "Yangiliklar", label_ru: "Yangiliklar", href: "/news" },
+  { icon: Globe, label: "Biz haqimizda", label_ru: "О нас", href: "/about" },
+  { icon: Shield, label: "Yangiliklar", label_ru: "Новости", href: "/news" },
   { icon: Layers, label: "Bo'limlar", label_ru: "Отделения", href: "/departments" },
   { icon: Users, label: "Shifokorlar", label_ru: "Врачи", href: "/doctors" }
 ]
@@ -143,8 +143,7 @@ const heroContent = {
 const clinicImages = [
   { id: 1, src: "/photo1.jpg", title: "Jarrohlik", alt: "Jarrohlik bo'limi" },
   { id: 2, src: "/photo2.jpg", title: "Konsultatsiya", alt: "Konsultatsiya xonasi" },
-  { id: 3, src: "/photo3.jpg", title: "Laboratoriya", alt: "Zamonaviy laboratoriya" },
-  { id: 4, src: "/photo4.jpg", title: "Asboblar", alt: "Zamonaviy asboblar" },
+
 ]
 
 // Hospital ikonlari

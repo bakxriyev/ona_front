@@ -93,7 +93,7 @@ Kelajakda 300 o‘ringa mo‘ljallangan tug‘ruq kompleksi 2026-yilda ochilishi
             className="text-white/90 text-xl max-w-3xl animate-fade-in-up drop-shadow-lg font-light"
             style={{ animationDelay: "0.3s" }}
           >
-            {language === "ru" ? "Мы заботимся о вашем здоровье с душой и профессионализмом" : "Sizning salomatligingiz biz uchun muhim - professionallik va mehribonlik bilan"}
+            {language === "ru" ? "Мы заботимся о вашем здоровье с душой и профессионализмом" : "Sizning salomatligingiz biz uchun muhim - professionallik va mehribonlik bilan xizmat qilamiz"}
           </p>
         </div>
       </div>
@@ -106,7 +106,7 @@ Kelajakda 300 o‘ringa mo‘ljallangan tug‘ruq kompleksi 2026-yilda ochilishi
             ) : (
               <div className="relative h-96 rounded-3xl overflow-hidden shadow-2xl group">
                 <Image
-                  src='/header.jpg'
+                  src='/photo2.jpg'
                   alt="Sog'lom Ona va Bola"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out"
@@ -118,7 +118,7 @@ Kelajakda 300 o‘ringa mo‘ljallangan tug‘ruq kompleksi 2026-yilda ochilishi
 
           <div className="animate-fade-in-right" style={{ animationDelay: "0.2s" }}>
             <h2 className="text-4xl font-extrabold bg-gradient-to-r from-[#1e4a8d] via-[#0d7377] to-[#d32f2f] bg-clip-text text-transparent mb-6">
-              {t("Bizning haqimizda", "О нас")}
+              {t("Biz haqimizda", "О нас")}
             </h2>
             {isLoading ? (
               <div className="space-y-4">

@@ -106,19 +106,20 @@ export function Footer() {
             {/* Column 1: Logo & Description */}
             <div className="sm:col-span-2 lg:col-span-1 lg:pr-4">
               {/* Logo */}
-              <div className="flex items-center gap-2 mb-4">
+            
+              <div className="flex items-center gap-2 mb-6">
                 {about?.logo ? (
                   <Image
                     src="/qizil.jpg"
                     alt={about?.full_name || "SOG`LOM ONA VA BOLA KLINIKASI"}
-                    width={250}
-                    height={250}
-                    className="h-12 w-auto object-contain"
+                    width={400}
+                    height={300}
+                    className="h-40 w-auto object-contain"
                   />
                 ) : (
                   <div className="flex items-center gap-2">
                     <div className="bg-[#c41e3a] text-white px-3 py-1.5 rounded-full text-xs font-bold">
-                   SOG`LOM ONA VA BOLA KLINIKASI
+                      SOG`LOM ONA VA BOLA KLINIKASI
                     </div>
                     <div className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
                       <span className="text-yellow-700 text-sm">✓</span>

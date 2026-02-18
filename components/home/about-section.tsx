@@ -58,9 +58,9 @@ export function AboutSection({ isLoading }: AboutSectionProps) {
         {/* Content */}
         <div className="w-full lg:w-1/2 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
           <h2 className="text-3xl font-bold text-[#d32f2f] mb-4">Klinika haqida</h2>
+          <h2 className="text-3xl font-bold text-[#d32f2f] mb-4">О клинике</h2>
           <p className="text-gray-600 mb-8 leading-relaxed">
-       Шифохонамиз 2022 ийл октябрь ойида уз иш фаолятини бошлаган.Шифохонамаз Тошкент шахар Бектемир тумани  Обод кучаси 123 уйда жойлашган булиб,клиникамизда Педиатрия,Невралогия Эндокринология Гинекология,Умумий Терапия,Оторинолорингология булимлари ташкил килинган.ва 25 урин жой тури билан таминланган.Палаталаримизда хамма шаройтлар мавжуд булиб люкс каторига киради.Соглом она ва бола клиникаси 2022 ийлдан буён она ва бола хамда нуронийларимизни саломатлигини мухофаза килиш,ерта ташхис ва сифатли даволаш ишларини амалга ошириб келмокда 
-          </p>
+      Shifoxonamiz 2022-yil oktyabr oyida o‘z ish faoliyatini boshlagan. Shifoxonamiz Toshkent shahar Bektemir tumani, Obod ko‘chasi 123-uyda joylashgan bo‘lib, klinikamizda pediatriya, nevrologiya, endokrinologiya, ginekologiya, umumiy terapiya hamda otorinolaringologiya bo‘limlari tashkil qilingan va 25 o‘rin joy bilan ta’minlangan. Palatalarimizda barcha sharoitlar mavjud bo‘lib, lyuks toifasiga kiradi. “Sog‘lom ona va bola” klinikasi 2022-yildan buyon ona va bola hamda nuroniylarimiz salomatligini muhofaza qilish, erta tashxis va sifatli davolash ishlarini amalga oshirib kelmoqda.   </p>
 
         </div>
       </div>
