@@ -101,20 +101,18 @@ export function Footer() {
 
       {/* Main white section - full width */}
       <div className="bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+        <div className="max-w-7xl mx-auto px-8 lg:px-8 py-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10">
             {/* Column 1: Logo & Description */}
-            <div className="sm:col-span-2 lg:col-span-1 lg:pr-4">
-              {/* Logo */}
-            
+            <div className="sm:col-span-2 lg:col-span-1 lg:pr-4 -mt-16">     
               <div className="flex items-center gap-2 mb-6">
                 {about?.logo ? (
                   <Image
-                    src="/qizil.jpg"
+                    src="/logo_ona.png"
                     alt={about?.full_name || "SOG`LOM ONA VA BOLA KLINIKASI"}
-                    width={400}
-                    height={300}
-                    className="h-40 w-auto object-contain"
+                    width={700}
+                    height={400}
+                    className="h-50 w-auto object-contain"
                   />
                 ) : (
                   <div className="flex items-center gap-2">
@@ -129,7 +127,7 @@ export function Footer() {
               </div>
 
               {/* Description - static */}
-              <p className="text-sm text-gray-600 mb-5 leading-relaxed">
+              <p className="text-sm -mt-20 text-gray-600 mb-3 leading-relaxed">
               SOG`LOM ONA VA BOLA KLINIKASI
               </p>
 
