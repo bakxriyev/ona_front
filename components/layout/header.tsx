@@ -54,7 +54,7 @@ export function Header() {
     switch (dropdownType) {
       case "services":
         return (
-          <div className="grid grid-cols-2 gap-4 p-6 min-w-[500px]">
+          <div className="grid grid-cols-2 gap-4 p-6 min-w-[800px]">
             <div className="space-y-2">
               <Link
                 href="/services"
@@ -84,13 +84,13 @@ export function Header() {
               ))}
             </div>
             {about?.logo && (
-              <div className="col-span-2 flex justify-end items-center pt-12 border-t mt-12">
+              <div className="col-span-2 flex justify-end items-center pt-14 border-t mt-12">
                 <Image
                   src={getImageUrl("about", about.logo) || "/placeholder.svg"}
                   alt="Logo"
-                  width={500}
-                  height={500}
-                  className="h-12 w-auto object-contain"
+                  width={600}
+                  height={700}
+                  className="h-24 w-50 object-contain"
                 />
               </div>
             )}
@@ -190,7 +190,7 @@ export function Header() {
                 alt="Logo"
                 width={320}
                 height={120}
-                className="h-24 w-auto object-contain brightness-0 invert"
+                className="h-50 w-auto object-contain brightness-0 invert"
               />
             ) : (
               <span className="text-3xl font-bold text-white">LOGO</span>
