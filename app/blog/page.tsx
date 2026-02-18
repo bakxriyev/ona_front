@@ -28,11 +28,11 @@ export default function BlogPage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen ">
       <Header />
 
       {/* Hero */}
-      <div className="bg-[#669ad6] py-12">
+      <div className="bg-gradient-to-br from-[#0e3166] via-[#021449] to-[#06224b] py-12">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h1 className="text-3xl md:text-4xl font-bold text-white italic">
             {t("Maqolalari", "Статьи ")}

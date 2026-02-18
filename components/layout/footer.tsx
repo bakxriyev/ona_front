@@ -34,8 +34,8 @@ export function Footer() {
   ]
 
   const defaults = {
-    manzil: "Тошкент шахар Бектемир тумани  Обод кучаси 123 уй",
-    manzil_ru: "Тошкент шахар Бектемир тумани  Обод кучаси 123 уй",
+    manzil: "Toshkent shahar, Bektemir tumani, Obod ko'chasi, 123 uy",
+    manzil_ru: "Ташкент, Бектемирский район, улица Обод, дом 123",
   }
 
   if (isLoading) {
@@ -97,30 +97,29 @@ export function Footer() {
         <div className="max-w-7xl mx-auto px-8 lg:px-8 py-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10">
             {/* Column 1: Logo & Description */}
-            <div className="sm:col-span-2 lg:col-span-1 lg:pr-4 -mt-16">
-              <div className="flex items-center gap-2 mb-6">
+            <div className="sm:col-span-2 lg:col-span-1 -mt-16 lg:pr-0"> {/* lg:pr-0 padding o‘ngni olib tashlaydi */}
+              <div className="flex items-center gap-2 mb-6 justify-start">
                 {about?.logo ? (
                   <Image
                     src="/logo_ona.png"
                     alt={about?.full_name || "SOG`LOM ONA VA BOLA KLINIKASI"}
                     width={700}
                     height={400}
-                    className="h-50 w-auto object-contain"
+                    className="h-50 w-auto object-contain ml-0" // logoni chapga suradi
                   />
                 ) : (
                   <div className="flex items-center gap-2">
-                    <div className="bg-gradient-to-r from-red-700 to-red-800 text-white px-3 py-1.5 rounded-full text-xs font-bold">
+                    <div className="bg-gradient-to-r from-red-700 to-red-800 text-white px-3 py-1.5 rounded-full text-xs font-bold ml-0">
                       SOG`LOM ONA VA BOLA KLINIKASI
                     </div>
                   </div>
                 )}
               </div>
 
-              <p className="text-sm -mt-20 text-gray-600 mb-3 leading-relaxed">
+              <p className="text-sm -mt-20 text-gray-600 mb-2 leading-relaxed">
                 SOG`LOM ONA VA BOLA KLINIKASI
               </p>
 
-              {/* Social links — hover da qizil */}
               <div className="flex gap-4">
                 <a
                   href="https://www.instagram.com/ona_bola_clinic/"
@@ -136,6 +135,7 @@ export function Footer() {
                 </a>
               </div>
             </div>
+
 
             {/* Column 2: Menu */}
             <div>

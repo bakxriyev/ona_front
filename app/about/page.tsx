@@ -71,7 +71,7 @@ Kelajakda 300 o‘ringa mo‘ljallangan tug‘ruq kompleksi 2026-yilda ochilishi
       <Header />
 
       {/* Hero - Improved with better typography and subtle glow */}
-      <div className="relative h-[450px] bg-gradient-to-br from-[#1e4a8d] via-[#0d7377] to-[#1e4a8d] overflow-hidden shadow-2xl">
+      <div className="relative h-[450px] bg-gradient-to-br from-[#0e3166] via-[#0e225c] to-[#06224b] overflow-hidden shadow-2xl">
         <div className="absolute inset-0 opacity-20">
           {[...Array(6)].map((_, i) => (
             <div

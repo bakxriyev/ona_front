@@ -416,7 +416,7 @@ export default function ServicesPage() {
       )}
 
       {/* Hero */}
-      <div className="relative h-[450px] bg-gradient-to-br from-[#1e4a8d] via-[#0d7377] to-[#1e4a8d] overflow-hidden shadow-2xl">
+      <div className="relative h-[450px] bg-gradient-to-br from-[#0e3166] via-[#06164e] to-[#06224b]  overflow-hidden shadow-2xl">
         <div className="absolute inset-0 opacity-20">
           {[...Array(6)].map((_, i) => (
             <div
