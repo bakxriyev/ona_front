@@ -18,6 +18,7 @@ import {
   MessageCircle,
   Instagram,
   X,
+  HospitalIcon,
 } from "lucide-react"
 import { HeroSkeleton } from "@/components/ui/loading-skeleton"
 import { useLanguage } from "../../context/language-context"
@@ -56,8 +57,8 @@ interface TimeSlot {
 
 const quickActions = [
   { icon: Plus, label: "Qabulga yozilish", label_ru: "Записаться на прием", href: "/appointment" },
-  { icon: Globe, label: "Biz haqimizda", label_ru: "О нас", href: "/about" },
-  { icon: Shield, label: "Yangiliklar", label_ru: "Новости", href: "/news" },
+  { icon: HospitalIcon, label: "Biz haqimizda", label_ru: "О нас", href: "/about" },
+  { icon: Globe, label: "Yangiliklar", label_ru: "Новости", href: "/news" },
   { icon: Layers, label: "Bo'limlar", label_ru: "Отделения", href: "/departments" },
   { icon: Users, label: "Shifokorlar", label_ru: "Врачи", href: "/doctors" }
 ]
