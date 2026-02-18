@@ -77,8 +77,8 @@ export function Footer() {
             <div className="flex-shrink-0">
               <p className="font-semibold text-white mb-2">{t("Ish vaqti", "Время работы")}</p>
               <div className="text-sm text-white/90 space-y-0.5">
-                <p>{t("Dushanbadan – Yakshanbagacha: 24/7", "Круглосуточная работа: 24/7")}</p>
-              
+                <p>{t("Har kuni: 24/7", "Круглосуточно: 24/7")}</p>
+
               </div>
             </div>
 
@@ -109,10 +109,10 @@ export function Footer() {
               <div className="flex items-center gap-2 mb-4">
                 {about?.logo ? (
                   <Image
-                    src={getImageUrl("about", about.logo) || "/placeholder.svg"}
+                    src="/qizil.jpg"
                     alt={about?.full_name || "SOG`LOM ONA VA BOLA KLINIKASI"}
-                    width={150}
-                    height={60}
+                    width={250}
+                    height={250}
                     className="h-12 w-auto object-contain"
                   />
                 ) : (

@@ -210,7 +210,7 @@ const ContactModal = ({ isOpen, onClose, onAppointmentOpen, language }: ContactM
 
           {/* Telegram */}
           <a
-            href="https://www.instagram.com/ona_bolalar1/"
+            href="https://t.me/ona_bolalar1/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-4 p-4 rounded-xl border border-gray-200 hover:bg-cyan-50 hover:border-cyan-300 transition-all group"
