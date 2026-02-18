@@ -97,8 +97,8 @@ const modalContent = {
 
 // ✅ Klinika telefon raqamlarini shu yerda o'zgartiring
 const CLINIC_PHONES = [
-  { label: "+998 77 313 01 30", number: "+998 77 313 01 30" },
-  { label: "+998 55 902 10 10", number: "+998 55 902 10 10" },
+  { label: "+998 95-818-84-42", number: "+998 95-818-84-42" },
+  { label: "+998 95-818-84-43", number: "+998 95-818-84-43" },
 ]
 
 export default function DoctorDetailPage() {
