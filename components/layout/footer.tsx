@@ -35,8 +35,7 @@ export function Footer() {
 
   const defaults = {
     manzil: "Toshkent shahar, Bektemir tumani, Obod ko'chasi, 123 uy",
-    manzil_ru: "Ташкент, Бектемирский район, улица Обод, дом 123",
-  }
+    manzil_ru: "Ташкент, Бектемирский район, улица Обод, дом 123",}
 
   if (isLoading) {
     return (
@@ -98,23 +97,15 @@ export function Footer() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10">
             {/* Column 1: Logo & Description */}
             <div className="sm:col-span-2 lg:col-span-1 -mt-16 lg:pr-0"> {/* lg:pr-0 padding o‘ngni olib tashlaydi */}
-              <div className="flex items-center gap-2 mb-6 justify-start">
-                {about?.logo ? (
-                  <Image
-                    src="/logo_ona.png"
-                    alt={about?.full_name || "SOG`LOM ONA VA BOLA KLINIKASI"}
-                    width={700}
-                    height={400}
-                    className="h-50 w-auto object-contain ml-0" // logoni chapga suradi
-                  />
-                ) : (
-                  <div className="flex items-center gap-2">
-                    <div className="bg-gradient-to-r from-red-700 to-red-800 text-white px-3 py-1.5 rounded-full text-xs font-bold ml-0">
-                      SOG`LOM ONA VA BOLA KLINIKASI
-                    </div>
-                  </div>
-                )}
-              </div>
+              <div className="flex items-center mb-8 -ml-4 lg:-ml-3">
+  <Image
+    src="/logo_ona.png"
+    alt={about?.full_name || "SOG`LOM ONA VA BOLA KLINIKASI"}
+    width={700}
+    height={400}
+    className="h-44 w-auto object-contain "
+  />
+</div>
 
               <p className="text-sm -mt-20 text-gray-600 mb-2 leading-relaxed">
                 SOG`LOM ONA VA BOLA KLINIKASI

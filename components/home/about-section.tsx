@@ -1,41 +1,16 @@
 "use client"
 
 import Image from "next/image"
-import { Globe, Users, Cpu,DockIcon,HelpCircle } from "lucide-react"
-import { DoctorCardSkeleton, Skeleton } from "../../components/ui/loading-skeleton"
-import { About } from "@/lib/types"
-import { Feature } from "next/dist/build/webpack/plugins/telemetry-plugin/telemetry-plugin"
+import { Skeleton } from "../../components/ui/loading-skeleton"
+import { useLanguage } from "../../context/language-context"
 
-interface AboutSectionProps {
-  isLoading?: boolean
-   about?: About | null
-}
+export function AboutSection({ isLoading }: { isLoading?: boolean }) {
+  const { t, isLoaded } = useLanguage()
 
-const features = [
-  { icon: Globe, title: "LABORATORIYA" },
-  { icon: Users, title: "FIZIOTERAPIYA" },
-  { icon: Cpu, title: "AMBULATOR VA STATSIONARDAVOLASH" },
-  { icon:DockIcon, title: "TEZ TIBBIY YORDAM (1299)"},
-  { icon:HelpCircle, title: "MASLAHAT BERISH XIZMATI" },
-]
-
-export function AboutSection({ isLoading }: AboutSectionProps) {
-
-  if (isLoading) {
+  if (!isLoaded || isLoading) {
     return (
       <section className="py-16 px-4 max-w-7xl mx-auto">
-        <div className="flex flex-col lg:flex-row gap-12 items-center">
-          <Skeleton className="w-full lg:w-1/2 h-80 rounded-2xl" />
-          <div className="w-full lg:w-1/2 space-y-4">
-            <Skeleton className="h-8 w-48" />
-            <Skeleton className="h-20 w-full" />
-            <div className="flex gap-4">
-              {[...Array(3)].map((_, i) => (
-                <Skeleton key={i} className="h-16 w-40" />
-              ))}
-            </div>
-          </div>
-        </div>
+        <Skeleton className="w-full h-80 rounded-2xl" />
       </section>
     )
   }
@@ -44,11 +19,11 @@ export function AboutSection({ isLoading }: AboutSectionProps) {
     <section className="py-16 px-4 max-w-7xl mx-auto">
       <div className="flex flex-col lg:flex-row gap-12 items-center">
         {/* Image */}
-        <div className="w-full lg:w-1/2 animate-fade-in-up">
+        <div className="w-full lg:w-1/2">
           <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl">
             <Image
               src="/about.jpg"
-              alt="Akfa Medline University Hospital"
+              alt="clinic"
               fill
               className="object-cover"
             />
@@ -56,12 +31,17 @@ export function AboutSection({ isLoading }: AboutSectionProps) {
         </div>
 
         {/* Content */}
-        <div className="w-full lg:w-1/2 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-          <h2 className="text-3xl font-bold text-[#d32f2f] mb-4">Klinika haqida</h2>
-          <h2 className="text-3xl font-bold text-[#d32f2f] mb-4">О клинике</h2>
-          <p className="text-gray-600 mb-8 leading-relaxed">
-      Shifoxonamiz 2022-yil oktyabr oyida o‘z ish faoliyatini boshlagan. Shifoxonamiz Toshkent shahar Bektemir tumani, Obod ko‘chasi 123-uyda joylashgan bo‘lib, klinikamizda pediatriya, nevrologiya, endokrinologiya, ginekologiya, umumiy terapiya hamda otorinolaringologiya bo‘limlari tashkil qilingan va 25 o‘rin joy bilan ta’minlangan. Palatalarimizda barcha sharoitlar mavjud bo‘lib, lyuks toifasiga kiradi. “Sog‘lom ona va bola” klinikasi 2022-yildan buyon ona va bola hamda nuroniylarimiz salomatligini muhofaza qilish, erta tashxis va sifatli davolash ishlarini amalga oshirib kelmoqda.   </p>
+        <div className="w-full lg:w-1/2">
+          <h2 className="text-3xl font-bold text-[#d32f2f] mb-4">
+            {t("Klinika haqida", "О клинике")}
+          </h2>
 
+          <p className="text-gray-600 mb-8 leading-relaxed">
+            {t(
+              "Shifoxonamiz 2022-yil oktyabr oyida o‘z ish faoliyatini boshlagan. Shifoxonamiz Toshkent shahar Bektemir tumani, Obod ko‘chasi 123-uyda joylashgan bo‘lib, klinikamizda pediatriya, nevrologiya, endokrinologiya, ginekologiya, umumiy terapiya hamda otorinolaringologiya bo‘limlari tashkil qilingan va 25 o‘rin joy bilan ta’minlangan. Palatalarimizda barcha sharoitlar mavjud bo‘lib, lyuks toifasiga kiradi. “Sog‘lom ona va bola” klinikasi 2022-yildan buyon ona va bola hamda nuroniylarimiz salomatligini muhofaza qilish, erta tashxis va sifatli davolash ishlarini amalga oshirib kelmoqda.",
+              "Наша клиника начала свою деятельность в октябре 2022 года. Клиника расположена в Бектемирском районе города Ташкента, по улице Обод, дом 123. В нашей клинике функционируют отделения педиатрии, неврологии, эндокринологии, гинекологии, общей терапии и оториноларингологии, всего 25 коек. Все палаты оснащены современными удобствами и относятся к категории люкс. Клиника «Здоровая мать и ребенок» с 2022 года обеспечивает охрану здоровья матерей, детей и пожилых людей, раннюю диагностику и качественное лечение."
+            )}
+          </p>
         </div>
       </div>
     </section>
