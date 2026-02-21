@@ -61,7 +61,7 @@ export default function HomePage() {
         <NewsSection news={news} isLoading={isLoading} />
         <DoctorsSection doctors={doctors} isLoading={isLoading} />
         <DepartmentsSection departments={departments} isLoading={isLoading} />
-        <AboutSection isLoading={isLoading} about={about} />
+        <AboutSection isLoading={isLoading} />
       </main>
       <Footer />
     </div>
