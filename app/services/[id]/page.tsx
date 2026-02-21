@@ -1,5 +1,4 @@
 "use client"
-
 import { useEffect, useState } from "react"
 import { useParams } from "next/navigation"
 import Image from "next/image"
@@ -127,7 +126,7 @@ function AppointmentModal({
       if (response.ok) {
         const data = await response.json()
         if (Array.isArray(data)) {
-          const names = data.map((dept) => dept.name || dept.title || dept)
+          const names = data.map((dept: any) => dept.name || dept.title || dept)
           setDepartments(names)
         }
       }
@@ -150,6 +149,7 @@ function AppointmentModal({
   }
 
   const getTodayDate = () => new Date().toISOString().split("T")[0]
+
   const getMaxDate = () => {
     const d = new Date()
     d.setDate(d.getDate() + 30)
@@ -218,95 +218,105 @@ function AppointmentModal({
   const content = modalContent[language]
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+      onClick={handleClose}
+    >
       <div
-        className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl animate-fade-in-scale overflow-hidden max-h-[90vh] overflow-y-auto"
+        className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto animate-fade-in-scale"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b sticky top-0 bg-white z-10">
-          <h2 className="text-2xl font-bold text-gray-800">{content.title}</h2>
+        <div className="flex items-center justify-between p-6 border-b border-gray-100 sticky top-0 bg-white rounded-t-3xl z-10">
+          <h2 className="text-2xl font-bold text-gray-900">{content.title}</h2>
           <button
             onClick={handleClose}
-            disabled={isSubmitting}
-            className="p-2 rounded-full hover:bg-gray-100 transition-colors disabled:opacity-50"
+            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
           >
-            <X className="w-6 h-6 text-gray-600" />
+            <X className="w-5 h-5 text-gray-500" />
           </button>
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="p-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-            {/* Full Name */}
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">{content.fullName}</label>
-              <input
-                type="text"
-                name="full_name"
-                value={formData.full_name}
-                onChange={handleInputChange}
-                placeholder={content.placeholder.fullName}
-                required
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#1e4a8d] focus:border-transparent outline-none transition-all"
-              />
-            </div>
+        <form onSubmit={handleSubmit} className="p-6 space-y-5">
+          {/* Full Name */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              {content.fullName}
+            </label>
+            <input
+              type="text"
+              name="full_name"
+              value={formData.full_name}
+              onChange={handleInputChange}
+              placeholder={content.placeholder.fullName}
+              required
+              className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1e4a8d] focus:border-transparent transition-all"
+            />
+          </div>
 
-            {/* Phone */}
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">{content.phone}</label>
-              <input
-                type="tel"
-                name="phone_number"
-                value={formData.phone_number}
-                onChange={handleInputChange}
-                placeholder={content.placeholder.phone}
-                required
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#1e4a8d] focus:border-transparent outline-none transition-all"
-              />
-            </div>
+          {/* Phone */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              {content.phone}
+            </label>
+            <input
+              type="tel"
+              name="phone_number"
+              value={formData.phone_number}
+              onChange={handleInputChange}
+              placeholder={content.placeholder.phone}
+              required
+              className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1e4a8d] focus:border-transparent transition-all"
+            />
+          </div>
 
-            {/* Department */}
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">{content.department}</label>
-              <select
-                name="department"
-                value={formData.department}
-                onChange={handleInputChange}
-                disabled={loadingDepartments}
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#1e4a8d] focus:border-transparent outline-none transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <option value="">
-                  {loadingDepartments ? "Yuklanmoqda..." : content.placeholder.department}
+          {/* Department */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              {content.department}
+            </label>
+            <select
+              name="department"
+              value={formData.department}
+              onChange={handleInputChange}
+              required
+              className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1e4a8d] focus:border-transparent transition-all bg-white"
+            >
+              <option value="">
+                {loadingDepartments ? "Yuklanmoqda..." : content.placeholder.department}
+              </option>
+              {departments.map((dept) => (
+                <option key={dept} value={dept}>
+                  {dept}
                 </option>
-                {departments.map((dept) => (
-                  <option key={dept} value={dept}>
-                    {dept}
-                  </option>
-                ))}
-              </select>
-            </div>
+              ))}
+            </select>
+          </div>
 
-            {/* Date */}
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">{content.date}</label>
-              <input
-                type="date"
-                name="appointment_date"
-                value={formData.appointment_date}
-                onChange={handleInputChange}
-                min={getTodayDate()}
-                max={getMaxDate()}
-                required
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#1e4a8d] focus:border-transparent outline-none transition-all"
-              />
-            </div>
+          {/* Date */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              {content.date}
+            </label>
+            <input
+              type="date"
+              name="appointment_date"
+              value={formData.appointment_date}
+              onChange={handleInputChange}
+              min={getTodayDate()}
+              max={getMaxDate()}
+              required
+              className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1e4a8d] focus:border-transparent transition-all"
+            />
           </div>
 
           {/* Time Slots */}
-          <div className="mb-6">
-            <label className="block text-sm font-medium text-gray-700 mb-3">{content.time}</label>
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-3">
+              {content.time}
+            </label>
+            <div className="grid grid-cols-4 sm:grid-cols-5 gap-2">
               {timeSlots.map((slot) => (
                 <button
                   key={slot.id}
@@ -328,26 +338,28 @@ function AppointmentModal({
           </div>
 
           {/* Message */}
-          <div className="mb-6">
-            <label className="block text-sm font-medium text-gray-700 mb-2">{content.message}</label>
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              {content.message}
+            </label>
             <textarea
               name="message"
               value={formData.message}
               onChange={handleInputChange}
               placeholder={content.placeholder.message}
               rows={3}
-              className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#1e4a8d] focus:border-transparent outline-none transition-all resize-none"
+              className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1e4a8d] focus:border-transparent transition-all resize-none"
             />
           </div>
 
           {/* Status */}
           {submitStatus === "success" && (
-            <div className="mb-4 p-3 bg-green-100 text-green-700 rounded-xl text-center">
+            <div className="p-3 bg-green-100 text-green-700 rounded-xl text-center">
               ✅ {content.success}
             </div>
           )}
           {submitStatus === "error" && (
-            <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-xl text-center">
+            <div className="p-3 bg-red-100 text-red-700 rounded-xl text-center">
               ❌ {content.error}
             </div>
           )}
@@ -375,8 +387,14 @@ function AppointmentModal({
 
       <style jsx>{`
         @keyframes fade-in-scale {
-          from { opacity: 0; transform: scale(0.8); }
-          to { opacity: 1; transform: scale(1); }
+          from {
+            opacity: 0;
+            transform: scale(0.8);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
         }
         .animate-fade-in-scale {
           animation: fade-in-scale 0.3s ease-out forwards;
@@ -386,17 +404,13 @@ function AppointmentModal({
   )
 }
 
-// ─── Main Page ───────────────────────────────────────────────────────────────
-
+// ─── Main Page ──────────────────────────────────────────────────────────────
 export default function ServiceDetailPage() {
   const { language, t } = useLanguage()
   const params = useParams()
   const [service, setService] = useState<Service | null>(null)
   const [isLoading, setIsLoading] = useState(true)
-
-  // Two separate modal open states: CTA bottom + contact section
   const [isCtaModalOpen, setIsCtaModalOpen] = useState(false)
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
 
   useEffect(() => {
     if (params.id) {
@@ -460,19 +474,20 @@ export default function ServiceDetailPage() {
 
   const videoUrl = service.video ? getVideoUrl("services", service.video) : null
 
+  const phoneNumbers = [
+    { label: "95-818-84-42", href: "tel:+998958188442" },
+    { label: "95-818-84-43", href: "tel:+998958188443" },
+    { label: "90-820-67-87", href: "tel:+998908206787" },
+  ]
+
   return (
     <div className="min-h-screen">
       <Header />
 
-      {/* Appointment Modals */}
+      {/* Appointment Modal */}
       <AppointmentModal
         isOpen={isCtaModalOpen}
         onClose={() => setIsCtaModalOpen(false)}
-        language={language}
-      />
-      <AppointmentModal
-        isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
         language={language}
       />
 
@@ -500,7 +515,10 @@ export default function ServiceDetailPage() {
         </section>
 
         {/* Service content */}
-        <section id="service-content" className="bg-white rounded-t-[40px] -mt-4 relative z-10 py-16 px-4">
+        <section
+          id="service-content"
+          className="bg-white rounded-t-[40px] -mt-4 relative z-10 py-16 px-4"
+        >
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col lg:flex-row gap-16 items-start">
               {/* Image */}
@@ -542,8 +560,14 @@ export default function ServiceDetailPage() {
 
                 {videoUrl && (
                   <div className="mb-8">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4">{t("Video", "Видео")}</h3>
-                    <video src={videoUrl} controls className="w-full rounded-3xl max-h-[400px] shadow-lg" />
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                      {t("Video", "Видео")}
+                    </h3>
+                    <video
+                      src={videoUrl}
+                      controls
+                      className="w-full rounded-3xl max-h-[400px] shadow-lg"
+                    />
                   </div>
                 )}
               </div>
@@ -557,7 +581,9 @@ export default function ServiceDetailPage() {
                 </h3>
                 <Accordion type="single" collapsible className="w-full space-y-4">
                   {service.details.map((detail: any, index: any) => {
-                    const detailVideoUrl = detail.video ? getVideoUrl("services", detail.video) : null
+                    const detailVideoUrl = detail.video
+                      ? getVideoUrl("services", detail.video)
+                      : null
                     return (
                       <AccordionItem
                         key={detail.id}
@@ -568,14 +594,19 @@ export default function ServiceDetailPage() {
                           {language === "ru" ? detail.title_ru : detail.title}
                         </AccordionTrigger>
                         <AccordionContent className="text-gray-600 text-lg leading-relaxed py-6 px-6 bg-gray-50">
-                          <p className="mb-4">{language === "ru" ? detail.about_ru : detail.about}</p>
+                          <p className="mb-4">
+                            {language === "ru" ? detail.about_ru : detail.about}
+                          </p>
                           <p className="font-medium text-[#d32f2f] mb-4 text-xl">
-                            {t("Narx", "Цена")}: {language === "ru" ? detail.price_ru : detail.price}
+                            {t("Narx", "Цена")}:{" "}
+                            {language === "ru" ? detail.price_ru : detail.price}
                           </p>
                           {detail.photo && (
                             <div className="relative h-80 rounded-2xl overflow-hidden mb-6 shadow-md">
                               <Image
-                                src={getImageUrl("services", detail.photo) || "/placeholder.svg"}
+                                src={
+                                  getImageUrl("services", detail.photo) || "/placeholder.svg"
+                                }
                                 alt={language === "ru" ? detail.title_ru : detail.title}
                                 fill
                                 className="object-cover"
@@ -583,7 +614,11 @@ export default function ServiceDetailPage() {
                             </div>
                           )}
                           {detailVideoUrl && (
-                            <video src={detailVideoUrl} controls className="w-full rounded-2xl mb-6 shadow-lg" />
+                            <video
+                              src={detailVideoUrl}
+                              controls
+                              className="w-full rounded-2xl mb-6 shadow-lg"
+                            />
                           )}
                         </AccordionContent>
                       </AccordionItem>
@@ -617,12 +652,17 @@ export default function ServiceDetailPage() {
                 "Наши специалисты готовы ответить на все ваши вопросы"
               )}
             </p>
-            <button
-              onClick={() => setIsContactModalOpen(true)}
-              className="inline-block bg-white text-[#1e4a8d] px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors shadow-md hover:shadow-lg"
-            >
-              {t("Bog'lanish", "Связаться")}
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              {phoneNumbers.map((phone) => (
+                <a
+                  key={phone.label}
+                  href={phone.href}
+                  className="inline-flex items-center justify-center gap-2 bg-white text-[#1e4a8d] px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors shadow-md hover:shadow-lg"
+                >
+                  📞 {phone.label}
+                </a>
+              ))}
+            </div>
           </div>
         </section>
       </main>
